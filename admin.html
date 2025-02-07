@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Admin Panel - Artificial Chartered Accountant</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+      background-color: #f4f4f9;
+      color: #333;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      flex-direction: column;
+    }
+
+    .container {
+      background: white;
+      padding: 20px;
+      box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+      text-align: center;
+      border-radius: 10px;
+      width: 350px;
+      margin-bottom: 20px;
+    }
+
+    h2 {
+      color: #dc3545;
+    }
+
+    input {
+      width: 100%;
+      padding: 10px;
+      margin: 10px 0;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+    }
+
+    button {
+      width: 100%;
+      padding: 10px;
+      border: none;
+      background-color: #dc3545;
+      color: white;
+      font-size: 16px;
+      border-radius: 5px;
+      cursor: pointer;
+      margin-top: 10px;
+    }
+
+    button:hover {
+      background-color: #c82333;
+    }
+
+    .message {
+      margin-top: 15px;
+      font-size: 14px;
+    }
+
+    .contact-info {
+      width: 350px;
+      background: white;
+      padding: 15px;
+      box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+      border-radius: 10px;
+      text-align: center;
+      display: none; /* Hidden initially */
+    }
+
+    .contact-info h3 {
+      color: #28a745;
+    }
+
+    .contact-list {
+      text-align: left;
+      font-size: 16px;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="container">
+    <h2>Admin Panel</h2>
+    <p>Enter the admin password to clear user data.</p>
+    
+    <input type="password" id="adminPassword" placeholder="Enter password">
+    <button onclick="clearUserData()">Clear Data</button>
+
+    <p id="message" class="message"></p>
+  </div>
+
+  <div class="contact-info" id="contactInfo">
+    <h3>Contact Form Submissions</h3>
+    <div id="contactList" class="contact-list"></div>
+  </div>
+
+  <script>
+    function loadContactData() {
+      const contactData = JSON.parse(localStorage.getItem("contactFormData"));
+      const contactInfoDiv = document.getElementById("contactInfo");
+      const contactList = document.getElementById("contactList");
+
+      if (contactData) {
+        contactInfoDiv.style.display = "block"; // Show contact section
+        contactList.innerHTML = `
+          <p><strong>Name:</strong> ${contactData.name}</p>
+          <p><strong>Email:</strong> ${contactData.email}</p>
+        `;
+      } else {
+        contactInfoDiv.style.display = "none"; // Hide if no data exists
+      }
+    }
+
+    function clearUserData() {
+      const correctPassword = "dhanush123";
+      const enteredPassword = document.getElementById("adminPassword").value;
+      const message = document.getElementById("message");
+
+      if (enteredPassword === correctPassword) {
+        localStorage.clear(); // Clears all data in localStorage
+        message.style.color = "green";
+        message.innerText = "All user data has been cleared successfully!";
+        document.getElementById("contactInfo").style.display = "none"; // Hide contact info
+      } else {
+        message.style.color = "red";
+        message.innerText = "Incorrect password! Access denied.";
+      }
+    }
+
+    // Load contact data when the page loads
+    window.onload = loadContactData;
+  </script>
+
+</body>
+</html>

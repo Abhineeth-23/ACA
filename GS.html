@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Complete Your Account - Artificial Chartered Accountant</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+      background-color: #f4f4f9;
+      color: #333;
+    }
+
+    header {
+      background-color: #4caf50;
+      color: white;
+      padding: 20px 0;
+      text-align: center;
+      position: relative;
+    }
+
+    header h1 {
+      margin: 0;
+    }
+
+    .container {
+      max-width: 600px;
+      margin: 30px auto;
+      padding: 20px;
+      background: white;
+      box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    }
+
+    h2 {
+      color: #4caf50;
+    }
+
+    form {
+      display: flex;
+      flex-direction: column;
+    }
+
+    label {
+      margin-bottom: 5px;
+      font-weight: bold;
+    }
+
+    input[type="text"],
+    input[type="number"] {
+      padding: 10px;
+      margin-bottom: 15px;
+      border: 1px solid #ddd;
+      border-radius: 5px;
+      font-size: 16px;
+    }
+
+    button {
+      padding: 10px;
+      border: none;
+      background-color: #4caf50;
+      color: white;
+      font-size: 16px;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+
+    button:hover {
+      background-color: #0056b3;
+    }
+
+    footer {
+      text-align: center;
+      margin-top: 20px;
+      font-size: 0.9em;
+    }
+
+    .homeb {
+      color: #ffffff;
+      text-decoration: none;
+      position: absolute;
+      top: 20px;
+      right: 50px;
+      font-size: 16px;
+      font-weight: bold;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <a href="index.html" class="homeb">Home</a>
+    <h1>Complete Your Account</h1>
+    <p>Provide additional details to create your account</p>
+  </header>
+  <div class="container">
+    <h2>Tell Us About Yourself</h2>
+    <form id="accountForm">
+      <label for="occupation">Your Occupation</label>
+      <input type="text" id="occupation" name="occupation" placeholder="Enter your occupation (e.g., Software Engineer)" required>
+
+      <label for="salary">Your Monthly Salary</label>
+      <input type="number" id="salary" name="salary" placeholder="Enter your monthly salary" required>
+
+      <button type="submit">Create Account</button>
+    </form>
+  </div>
+  <footer>
+    <p>© 2025 Artificial Chartered Accountant. All rights reserved.</p>
+  </footer>
+
+  <script>
+    // Function to save data to localStorage
+    document.getElementById("accountForm").addEventListener("submit", function(event) {
+      event.preventDefault(); // Prevent default form submission
+
+      // Get input values
+      const occupation = document.getElementById("occupation").value;
+      const salary = document.getElementById("salary").value;
+
+      // Store data in local storage
+      const userData = {
+        occupation: occupation,
+        salary: salary
+      };
+      localStorage.setItem("userData", JSON.stringify(userData));
+
+      // Redirect to finalize_account.html
+      window.location.href = "finalize_account.html";
+    });
+
+    // Function to retrieve and display stored data
+    function loadStoredData() {
+      const storedData = localStorage.getItem("userData");
+      if (storedData) {
+        const userData = JSON.parse(storedData);
+        alert("Stored Data:\nOccupation: " + userData.occupation + "\nSalary: " + userData.salary);
+      }
+    }
+    
+    // Run the function when the page loads
+    window.onload = loadStoredData;
+  </script>
+</body>
+</html>

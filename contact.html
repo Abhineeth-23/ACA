@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Contact Us - Artificial Chartered Accountant</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+      background-color: #f9f9f9;
+      color: #333;
+    }
+
+    header {
+      background-color: #4caf50;
+      color: white;
+      padding: 20px 0;
+      text-align: left;
+      position: relative;
+    }
+
+    header h1, header p {
+      margin-left: 20px;
+    }
+
+    .home-button {
+      position: absolute;
+      top: 20px;
+      right: 20px;
+      padding: 8px 15px;
+      background-color: white;
+      color: #4caf50;
+      font-size: 16px;
+      font-weight: bold;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      text-decoration: none;
+    }
+
+    .home-button:hover {
+      background-color: #e6e6e6;
+    }
+
+    .container {
+      max-width: 600px;
+      margin: 30px auto;
+      padding: 20px;
+      background: white;
+      box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    }
+
+    h2 {
+      color: #4caf50;
+    }
+
+    form {
+      display: flex;
+      flex-direction: column;
+    }
+
+    label {
+      margin-bottom: 5px;
+      font-weight: bold;
+    }
+
+    input[type="text"],
+    input[type="email"] {
+      padding: 10px;
+      margin-bottom: 15px;
+      border: 1px solid #ddd;
+      border-radius: 5px;
+      font-size: 16px;
+    }
+
+    button {
+      padding: 10px;
+      border: none;
+      background-color: #4caf50;
+      color: white;
+      font-size: 16px;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+
+    button:hover {
+      background-color: #45a049;
+    }
+
+    footer {
+      text-align: center;
+      margin-top: 20px;
+      font-size: 0.9em;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>Contact Us</h1>
+    <p>We’d love to hear from you!</p>
+    <a href="index.html" class="home-button">Home</a>
+  </header>
+
+  <div class="container">
+    <h2>Get in Touch</h2>
+    <form id="contactForm">
+      <label for="name">Your Name</label>
+      <input type="text" id="name" name="name" placeholder="Enter your name" required>
+
+      <label for="email">Your Email</label>
+      <input type="email" id="email" name="email" placeholder="Enter your email" required>
+
+      <button type="submit">Submit</button>
+    </form>
+
+    <p><strong>Contact us at:</strong> dhanushvarma1457@gmail.com</p>
+  </div>
+
+  <footer>
+    <p>© 2025 Artificial Chartered Accountant. All rights reserved.</p>
+  </footer>
+
+  <script>
+    document.getElementById("contactForm").addEventListener("submit", function(event) {
+      event.preventDefault(); // Prevent default form submission
+  
+      // Get input values
+      const name = document.getElementById("name").value;
+      const email = document.getElementById("email").value;
+  
+      // Retrieve existing contact data from localStorage or initialize an empty array
+      let contactData = JSON.parse(localStorage.getItem("contactFormData")) || [];
+  
+      // Add the new entry to the array
+      contactData.push({ name, email });
+  
+      // Save updated contact data back to localStorage
+      localStorage.setItem("contactFormData", JSON.stringify(contactData));
+  
+      alert("Your details have been saved!");
+  
+      // Clear form fields after submission
+      document.getElementById("name").value = "";
+      document.getElementById("email").value = "";
+    });
+  </script>
+  
+</body>
+</html>

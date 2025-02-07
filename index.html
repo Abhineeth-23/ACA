@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Artificial CA</title>
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        /* General Styling */
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            color: white;
+        }
+
+        /* Video Background Styling */
+        .video-background {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+        }
+
+        .video-background video {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            filter: brightness(70%);
+        }
+
+        /* Navbar Styling */
+        nav {
+            background-color: rgba(0, 0, 0, 0.7);
+            color: white;
+            padding: 10px 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            position: fixed;
+            width: 100%;
+            z-index: 2;
+        }
+
+        nav .navbar a {
+            color: white;
+            text-decoration: none;
+            margin: 0 15px;
+            transition: color 0.3s ease;
+        }
+
+        nav .navbar a:hover {
+            color: #ff7f50;
+        }
+
+        /* Container Styling */
+        .container {
+            padding: 100px 20px 50px;
+            max-width: 600px;
+            margin: auto;
+            text-align: center;
+            position: relative;
+            z-index: 1;
+            animation: fadeIn 1.5s ease;
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        h1 {
+            font-size: 2.5rem;
+        }
+
+        p {
+            margin-bottom: 30px;
+            font-size: 1.2rem;
+            color: #ddd;
+        }
+
+        /* Input Form Styling */
+        .input-group {
+            margin: 15px 0;
+            position: relative;
+        }
+
+        input {
+            width: 100%;
+            padding: 10px;
+            margin: 5px 0;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            transition: all 0.3s ease;
+        }
+
+        input:focus {
+            outline: none;
+            border-color: #ff7f50;
+            box-shadow: 0 0 10px rgba(255, 127, 80, 0.5);
+        }
+
+        button {
+            width: 100%;
+            padding: 10px;
+            margin: 5px 0;
+            border: none;
+            border-radius: 5px;
+            background-color: #333;
+            color: white;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        button:hover {
+            background-color: #ff7f50;
+        }
+
+        /* Admin Button Styling */
+        .admin-button {
+            width: 5%;
+            margin-right: 5px;
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            color: white;
+            border-radius: 50px;
+            border: none;
+            cursor: pointer;
+            font-size: 14px;
+            transition: background-color 0.3s ease;
+        }
+
+    </style>
+</head>
+
+<body>
+    <div class="video-background">
+        <video autoplay muted loop>
+            <source src="https://videos.pexels.com/video-files/29167798/12595751_2560_1440_30fps.mp4" type="video/mp4">
+            Your browser does not support the video tag.
+        </video>
+    </div>
+
+    <nav>
+        <div class="brand">Artificial CA</div>
+        <div class="navbar">
+            <a href="about.html">About</a>
+            <a href="services.html">Services</a>
+            <a href="contact.html">Contact</a>
+        </div>
+    </nav>
+
+    <div class="container">
+        <h1>Welcome to Artificial CA</h1>
+        <p>Your ultimate AI-powered Chartered Accountant assistant.</p>
+        <form id="customerForm">
+            <div class="input-group">
+                <input type="text" id="name" placeholder="Full Name" required>
+            </div>
+            <div class="input-group">
+                <input type="email" id="email" placeholder="Email Address" required>
+            </div>
+            <div class="input-group">
+                <input type="tel" id="phone" placeholder="Phone Number" required>
+            </div>
+            <button type="submit">Get Started</button>
+        </form>
+    </div>
+
+    <!-- Admin Button -->
+    <button class="admin-button" onclick="window.location.href='admin.html'">Admin</button>
+
+    <script>
+        document.getElementById("customerForm").addEventListener("submit", function(event) {
+            event.preventDefault(); // Prevent default form submission
+
+            // Get form data
+            const name = document.getElementById("name").value;
+            const email = document.getElementById("email").value;
+            const phone = document.getElementById("phone").value;
+
+            // Store data in local storage
+            localStorage.setItem("user_name", name);
+            localStorage.setItem("user_email", email);
+            localStorage.setItem("user_phone", phone);
+
+            // Redirect to Get Started page
+            window.location.href = "GS.html";
+        });
+    </script>
+</body>
+</html>
